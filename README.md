@@ -1,6 +1,6 @@
-# Hacker New Clone
+# Hacker News Clone
 
-A Hacker New Clone made with ReactJS and TailwindCSS. A study on how to get data using APIs.
+A Hacker News Clone made with ReactJS and TailwindCSS. A study on how to get data using APIs.
 
 ## Built With
 
