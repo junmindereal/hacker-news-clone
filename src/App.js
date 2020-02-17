@@ -1,15 +1,23 @@
-import React from "react";
-import Button from "./components/button";
+import React, { Component } from "react";
+import Navbar from "./components/navbar";
 
-function App() {
-  return (
-    <div className="flex flex-col w-3/4 mx-auto my-12 items-center">
-      <h1>Hello World</h1>
-      <Button onClick={() => console.log("I was clicked")}>
-        I am a button
-      </Button>
-    </div>
-  );
+class App extends Component {
+  render() {
+    const classes = {
+      main: `bg-bgPrimary1`,
+      container: `max-w-screen-md
+        pt-10
+        mx-auto`
+    };
+
+    return (
+      <div className={classes.main}>
+        <div className={classes.container}>
+          <Navbar />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
