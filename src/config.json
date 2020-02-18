@@ -1,0 +1,4 @@
+{
+  "apiUrl": "https://hacker-news.firebaseio.com/v0",
+  "json": ".json?print=pretty"
+}
