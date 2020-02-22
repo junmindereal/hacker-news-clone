@@ -1,22 +1,15 @@
 import React, { Component } from "react";
 import Navbar from "./components/navbar";
-import { getStoryIds, getStories } from "./services/storyService";
+import StoriesList from "./components/storiesList";
 
 class App extends Component {
-  state = {
-    ids: [],
-    stories: []
-  };
-  async componentDidMount() {
-    const { data: ids } = await getStoryIds("top");
-    let stories = await getStories(ids);
-    stories = stories.map(s => s.data);
-    this.setState({ ids, stories });
-  }
-
   render() {
     const classes = {
-      main: `bg-bgPrimary1`,
+      main: `
+        h-full
+        min-h-screen
+        min-h-full
+        bg-bgPrimary1`,
       container: `max-w-screen-md
         pt-10
         mx-auto`
@@ -26,6 +19,7 @@ class App extends Component {
       <div className={classes.main}>
         <div className={classes.container}>
           <Navbar />
+          <StoriesList />
         </div>
       </div>
     );
