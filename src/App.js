@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Navbar from "./components/navbar";
-import StoriesList from "./components/storiesList";
+import Navbar from "./components/Navbar";
+import StoriesList from "./components/StoriesList";
+import Footer from "./components/Footer";
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
         <div className={classes.container}>
           <Navbar />
           <StoriesList />
+          <Footer />
         </div>
       </div>
     );

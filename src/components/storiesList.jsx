@@ -1,23 +1,38 @@
-import React, { Component } from "react";
-import TimeAgo from "react-timeago";
+import React, { Component, Fragment } from "react";
+import Pagination from "react-js-pagination";
+import Title from "./Title";
+import StoryMeta from "./StoryMeta";
 import { getStoryIds, getStories } from "../services/storyService";
-import { formatDate } from "../utils/helpers";
+import { paginate } from "../utils/helpers";
 
 class StoriesList extends Component {
   state = {
-    stories: []
+    stories: [],
+    currentPage: 1,
+    pageSize: 10,
+    pageLimit: 5
   };
 
   async componentDidMount() {
     const { data: ids } = await getStoryIds("top");
     let stories = await getStories(ids);
     stories = stories.map(s => s.data);
-    this.setState({ stories });
+    this.setState({ stories, totalCount: stories.length });
     console.log(this.state);
   }
 
+  getPageData = () => {
+    const { currentPage, pageSize, stories: allStories } = this.state;
+    const stories = paginate(allStories, currentPage, pageSize);
+
+    return { data: stories };
+  };
+
+  handlePageChange = page => {
+    this.setState({ currentPage: page });
+  };
+
   render() {
-    const { stories } = this.state;
     const classes = {
       cardsContainer: `mt-12`,
       card: `p-6
@@ -25,44 +40,51 @@ class StoriesList extends Component {
         border-b-2
         border-bgPrimary1
         rounded`,
-      cardTitle: `text-lg
+      pagination: `pagination
+        flex
+        justify-center
+        my-6`,
+      paginItem: `mx-1
         text-primary1
-        font-semibold
-        hover:text-secondary1`,
-      cardMeta: `text-sm
-        text-primary2`,
-      metaLink: `font-semibold
-        hover:text-secondary2`
+        rounded
+        hover:bg-primary3`,
+      paginLink: `px-3
+        py-2`
     };
 
+    const { pageSize, currentPage, totalCount, pageLimit } = this.state;
+    const { data: stories } = this.getPageData();
+
     return (
-      <ul className={classes.cardsContainer}>
-        {stories.map(story => (
-          <li key={story.id} className={classes.card}>
-            <a
-              href={story.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={classes.cardTitle}
-            >
-              {story.title}
-            </a>
-            <div className={classes.cardMeta}>
-              <span>
-                by <span className={classes.metaLink}>{story.by}</span>{" "}
-              </span>
-              <TimeAgo date={formatDate(story.time)} />
-              <span>
-                {" "}
-                with{" "}
-                <span className={classes.metaLink}>
-                  {story.descendants} comments
-                </span>
-              </span>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <Fragment>
+        <ul className={classes.cardsContainer}>
+          {stories.map(story => (
+            <li key={story.id} className={classes.card}>
+              <Title url={story.url} title={story.title} />
+              <StoryMeta
+                by={story.by}
+                time={story.time}
+                descendants={story.descendants}
+              />
+            </li>
+          ))}
+        </ul>
+        <Pagination
+          hideDisabled
+          firstPageText="first"
+          lastPageText="last"
+          prevPageText="prev"
+          nextPageText="next"
+          innerClass={classes.pagination}
+          itemClass={classes.paginItem}
+          linkClass={classes.paginLink}
+          activePage={currentPage}
+          itemsCountPerPage={pageSize}
+          totalItemsCount={totalCount}
+          pageRangeDisplayed={pageLimit}
+          onChange={this.handlePageChange.bind(this)}
+        />
+      </Fragment>
     );
   }
 }
