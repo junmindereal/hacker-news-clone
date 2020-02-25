@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import TimeAgo from "react-timeago";
 import { formatDate } from "../utils/helpers";
 
-function StoryMeta({ by, time, descendants }) {
+function StoryMeta({ by, id, time, descendants }) {
   const classes = {
     cardMeta: `text-sm
       text-primary2`,
@@ -20,9 +21,9 @@ function StoryMeta({ by, time, descendants }) {
         <span>
           {" "}
           with{" "}
-          <span className={classes.metaLink}>
+          <Link to={`/story?id=${id}`} className={classes.metaLink}>
             {descendants} {descendants === 1 ? "comment" : "comments"}
-          </span>
+          </Link>
         </span>
       ) : null}
     </div>

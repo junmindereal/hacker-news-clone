@@ -1,22 +1,28 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function Title({ url, title }) {
+function Title({ url, id, title, style }) {
   const classes = {
     cardTitle: `text-lg
       text-primary1
       font-semibold
-      hover:text-secondary1`
+      hover:text-secondary1
+      ${style}`
   };
 
-  return (
+  return url ? (
     <a
-      href={url}
+      className={classes.cardTitle}
       target="_blank"
       rel="noopener noreferrer"
-      className={classes.cardTitle}
+      href={url}
     >
       {title}
     </a>
+  ) : (
+    <Link className={classes.cardTitle} to={`/post?id=${id}`}>
+      {title}
+    </Link>
   );
 }
 

@@ -15,8 +15,19 @@ class StoriesList extends Component {
     loading: true
   };
 
-  async componentDidMount() {
-    const { data: ids } = await getStoryIds("top");
+  componentDidMount() {
+    this.handleStories();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.type !== this.props.type) {
+      this.setState({ loading: true });
+      this.handleStories();
+    }
+  }
+
+  async handleStories() {
+    const { data: ids } = await getStoryIds(this.props.type);
     let stories = await getStories(ids);
     stories = stories.map(s => s.data);
     this.setState({ stories, totalCount: stories.length, loading: false });
@@ -75,9 +86,10 @@ class StoriesList extends Component {
             <ul className={classes.cardsContainer}>
               {stories.map(story => (
                 <li key={story.id} className={classes.card}>
-                  <Title url={story.url} title={story.title} />
+                  <Title url={story.url} id={story.id} title={story.title} />
                   <StoryMeta
                     by={story.by}
+                    id={story.id}
                     time={story.time}
                     descendants={story.descendants}
                   />

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import cSquare from "@iconify/icons-vs/c-square";
 import sunIcon from "@iconify/icons-fa-solid/sun";
@@ -48,12 +49,12 @@ class Navbar extends Component {
         </div>
         <div className={classes.navRight}>
           <div className={classes.navLinks}>
-            <div className={classes.navLink}>
+            <NavLink className={classes.navLink} to="/top">
               <span>Top</span>
-            </div>
-            <div className={classes.navLink}>
+            </NavLink>
+            <NavLink className={classes.navLink} to="/new">
               <span>New</span>
-            </div>
+            </NavLink>
           </div>
           <div className={classes.themeIcon}>
             <Icon icon={sunIcon} color="#FAF9F7" width="18" />
