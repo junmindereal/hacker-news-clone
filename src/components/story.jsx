@@ -2,34 +2,39 @@ import React, { Component, Fragment } from "react";
 import queryString from "query-string";
 import { BubbleSpinLoader } from "react-css-loaders2";
 import Title from "./Title";
-import { getItem } from "../services/storyService";
+import StoryMeta from "./StoryMeta";
+import Comment from "./Comment";
+import { getItem, getComments } from "../services/storyService";
 
 class Story extends Component {
   state = {
     story: null,
     comments: null,
-    loadingPost: true,
+    loadingStory: true,
     loadingComments: true
   };
 
   async componentDidMount() {
     const { id } = queryString.parse(this.props.location.search);
     const { data: story } = await getItem(id);
-    this.setState({ story, loadingPost: false });
+    this.setState({ story, loadingStory: false });
+    let comments = await getComments(this.state.story.kids || []);
+    comments = comments.map(c => c.data);
+    this.setState({ comments, loadingComments: false });
     console.log(this.state);
   }
 
   render() {
     const classes = {
-      story: `mt-12`,
+      story: `my-12`,
       storyName: `text-2xl`
     };
 
-    const { story, loadingPost } = this.state;
+    const { story, loadingStory, comments, loadingComments } = this.state;
 
     return (
       <Fragment>
-        {loadingPost ? (
+        {loadingStory ? (
           <BubbleSpinLoader color={"#423D33"} size={8} />
         ) : (
           <div className={classes.story}>
@@ -41,8 +46,22 @@ class Story extends Component {
                 title={story.title}
               />
             </h1>
-            <p className={classes.storyMeta}>Joined</p>
+            <StoryMeta
+              by={story.by}
+              id={story.id}
+              time={story.time}
+              descendants={story.descendants}
+            />
           </div>
+        )}
+        {loadingComments ? (
+          <BubbleSpinLoader color={"#423D33"} size={8} />
+        ) : (
+          <Fragment>
+            {comments.map(comment => (
+              <Comment key={comment.id} comment={comment} />
+            ))}
+          </Fragment>
         )}
       </Fragment>
     );

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 import Pagination from "react-js-pagination";
 import { BubbleSpinLoader } from "react-css-loaders2";
 import Title from "./Title";
@@ -119,3 +120,7 @@ class StoriesList extends Component {
 }
 
 export default StoriesList;
+
+StoriesList.propTypes = {
+  stories: PropTypes.array.isRequired
+};

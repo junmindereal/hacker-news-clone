@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 function Title({ url, id, title, style }) {
@@ -27,3 +28,10 @@ function Title({ url, id, title, style }) {
 }
 
 export default Title;
+
+Title.propTypes = {
+  url: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  style: PropTypes.string
+};
