@@ -5,7 +5,8 @@ function Footer(props) {
     container: `flex
       flex-row
       justify-center
-      pb-6`,
+      pb-6
+      mt-16`,
     colLeft: `mr-2`,
     text: `text-sm
       text-primary2`,
