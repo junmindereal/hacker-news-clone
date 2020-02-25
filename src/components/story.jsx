@@ -16,17 +16,19 @@ class Story extends Component {
 
   async componentDidMount() {
     const { id } = queryString.parse(this.props.location.search);
+
     const { data: story } = await getItem(id);
     this.setState({ story, loadingStory: false });
+
     let comments = await getComments(this.state.story.kids || []);
     comments = comments.map(c => c.data);
     this.setState({ comments, loadingComments: false });
-    console.log(this.state);
   }
 
   render() {
     const classes = {
-      story: `my-12`,
+      story: `mt-12
+        mb-8`,
       storyName: `text-2xl`
     };
 

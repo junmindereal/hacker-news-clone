@@ -29,6 +29,7 @@ class StoriesList extends Component {
 
   async handleStories() {
     const { data: ids } = await getStoryIds(this.props.type);
+
     let stories = await getStories(ids);
     stories = stories.map(s => s.data);
     this.setState({ stories, totalCount: stories.length, loading: false });

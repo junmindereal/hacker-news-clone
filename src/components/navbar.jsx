@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import cSquare from "@iconify/icons-vs/c-square";
 import sunIcon from "@iconify/icons-fa-solid/sun";
@@ -39,13 +39,15 @@ class Navbar extends Component {
     return (
       <nav className={classes.nav}>
         <div className={classes.navLeft}>
-          <Icon
-            className={classes.icon}
-            icon={cSquare}
-            color="#BA2525"
-            width="32px"
-          />
-          <span className={classes.siteName}>Hacker News Clone</span>
+          <Link to="/" className={classes.navLeft}>
+            <Icon
+              className={classes.icon}
+              icon={cSquare}
+              color="#BA2525"
+              width="32px"
+            />
+            <span className={classes.siteName}>Hacker News Clone</span>
+          </Link>
         </div>
         <div className={classes.navRight}>
           <div className={classes.navLinks}>
