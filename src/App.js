@@ -7,6 +7,15 @@ import User from "./components/User";
 import Footer from "./components/Footer";
 
 class App extends Component {
+  state = {
+    theme: "light"
+  };
+
+  handleTheme = t => {
+    const theme = t === "light" ? "dark" : "light";
+    this.setState({ theme });
+  };
+
   render() {
     const classes = {
       main: `
@@ -19,10 +28,12 @@ class App extends Component {
         mx-auto`
     };
 
+    const { theme } = this.state;
+
     return (
-      <div className={classes.main}>
+      <div className={`${classes.main} ${this.state.theme}`}>
         <div className={classes.container}>
-          <Navbar />
+          <Navbar theme={theme} onToggle={() => this.handleTheme(theme)} />
           <Switch>
             <Route path="/top" render={() => <Stories type="top" />} />
             <Route path="/new" render={() => <Stories type="new" />} />

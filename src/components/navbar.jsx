@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import cSquare from "@iconify/icons-vs/c-square";
 import sunIcon from "@iconify/icons-fa-solid/sun";
+import moonIcon from "@iconify/icons-fa-solid/moon";
 
 class Navbar extends Component {
   render() {
@@ -33,7 +34,8 @@ class Navbar extends Component {
         ml-8
         p-2
         rounded-full
-        bg-supporting`
+        bg-supporting
+        cursor-pointer`
     };
 
     return (
@@ -58,8 +60,12 @@ class Navbar extends Component {
               <span>New</span>
             </NavLink>
           </div>
-          <div className={classes.themeIcon}>
-            <Icon icon={sunIcon} color="#FAF9F7" width="18" />
+          <div className={classes.themeIcon} onClick={this.props.onToggle}>
+            {this.props.theme === "light" ? (
+              <Icon icon={sunIcon} color="#FAF9F7" width="18" />
+            ) : (
+              <Icon icon={moonIcon} color="#27241D" width="18" />
+            )}
           </div>
         </div>
       </nav>

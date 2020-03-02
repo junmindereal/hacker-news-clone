@@ -5,3 +5,43 @@
 .active {
   @apply bg-primary3;
 }
+
+.dark.bg-bgPrimary1 {
+  background-color: #27241d;
+}
+
+.dark .bg-bgPrimary2 {
+  background-color: #423d33;
+}
+
+.dark .text-primary1 {
+  color: #e8e6e1;
+}
+
+.dark .text-primary2 {
+  color: #d3cec4;
+}
+
+.dark .bg-supporting {
+  background-color: #87eaf2;
+}
+
+.dark .border-bgPrimary1 {
+  border-color: #27241d;
+}
+
+.dark .hover\:bg-primary3:hover {
+  background-color: #625d52;
+}
+
+.dark .hover\:text-secondary1:hover {
+  color: #f7c948;
+}
+
+.dark .hover\:text-secondary2:hover {
+  color: #fadb5f;
+}
+
+.dark .active {
+  background-color: #625d52;
+}

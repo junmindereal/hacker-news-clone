@@ -4,7 +4,6 @@ import Title from "./Title";
 import StoryMeta from "./StoryMeta";
 
 function StoriesList({ stories }) {
-  console.log(stories);
   const classes = {
     card: `p-6
       bg-bgPrimary2
