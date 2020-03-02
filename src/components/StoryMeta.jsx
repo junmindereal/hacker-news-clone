@@ -14,10 +14,13 @@ function StoryMeta({ by, id, time, descendants }) {
   return (
     <div className={classes.cardMeta}>
       <span>
-        by <span className={classes.metaLink}>{by}</span>{" "}
+        by{" "}
+        <Link to={`/user?id=${by}`} className={classes.metaLink}>
+          {by}
+        </Link>{" "}
       </span>
       <TimeAgo date={formatDate(time)} />
-      {descendants ? (
+      {descendants > 0 ? (
         <span>
           {" "}
           with{" "}
