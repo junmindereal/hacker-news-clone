@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Stories from "./components/Stories";
 import Story from "./components/Story";
 import User from "./components/User";
+import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
 
 class App extends Component {
@@ -39,7 +40,9 @@ class App extends Component {
             <Route path="/new" render={() => <Stories type="new" />} />
             <Route path="/user" component={User} />
             <Route path="/story" component={Story} />
+            <Route path="/not-found" component={NotFound} />
             <Redirect from="/" exact to="/top" />
+            <Redirect to="/not-found" />
           </Switch>
           <Footer />
         </div>
