@@ -6,6 +6,10 @@
   @apply bg-primary3;
 }
 
+.sm-visible {
+  display: block;
+}
+
 .dark.bg-bgPrimary1 {
   background-color: #27241d;
 }
@@ -20,6 +24,10 @@
 
 .dark .text-primary2 {
   color: #d3cec4;
+}
+
+.dark .text-primary3 {
+  color: #504a40;
 }
 
 .dark .bg-supporting {

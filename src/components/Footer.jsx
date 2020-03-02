@@ -5,11 +5,14 @@ function Footer(props) {
     container: `flex
       flex-row
       justify-center
-      pb-6
-      mt-16`,
+      pb-4
+      mt-6
+      md:mt-16
+      md:pb-6`,
     colLeft: `mr-2`,
-    text: `text-sm
-      text-primary2`,
+    text: `text-xs
+      text-primary2
+      md:text-sm`,
     link: `font-semibold
       hover:text-secondary2`
   };

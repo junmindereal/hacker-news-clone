@@ -25,8 +25,9 @@ class App extends Component {
         min-h-full
         bg-bgPrimary1`,
       container: `max-w-screen-md
-        pt-10
-        mx-auto`
+        pt-4
+        mx-auto
+        md:pt-10`
     };
 
     const { theme } = this.state;

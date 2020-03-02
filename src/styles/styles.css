@@ -8360,6 +8360,10 @@ video {
   background-color: #D3CEC4;
 }
 
+.sm-visible {
+  display: block;
+}
+
 .dark.bg-bgPrimary1 {
   background-color: #27241d;
 }
@@ -8374,6 +8378,10 @@ video {
 
 .dark .text-primary2 {
   color: #d3cec4;
+}
+
+.dark .text-primary3 {
+  color: #504a40;
 }
 
 .dark .bg-supporting {

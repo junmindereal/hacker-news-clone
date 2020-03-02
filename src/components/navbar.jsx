@@ -10,32 +10,42 @@ class Navbar extends Component {
     const classes = {
       nav: `flex
         justify-between
-        items-center`,
+        items-center
+        px-3
+        lg:px-0`,
       navLeft: `flex
         items-center`,
       navRight: `flex
         items-center`,
       icon: `mr-4`,
-      siteName: `text-2xl
+      siteName: `hidden
+        md:block
+        text-2xl
         font-semibold
         text-primary1`,
       navLinks: `flex
         items-center`,
-      navLink: `mr-2
-        px-3
-        py-2
+      navLink: `mr-1
+        px-2
+        py-1
         font-semibold
         text-primary1
+        text-sm
         rounded-md
         hover:bg-primary3
-        last:mr-0`,
+        last:mr-0
+        md:mr-2
+        md:px-3
+        md:py-2
+        md:text-base`,
       themeIcon: `flex
         items-center
-        ml-8
+        ml-3
         p-2
         rounded-full
         bg-supporting
-        cursor-pointer`
+        cursor-pointer
+        md:ml-8`
     };
 
     return (

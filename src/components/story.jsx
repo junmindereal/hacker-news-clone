@@ -27,9 +27,16 @@ class Story extends Component {
 
   render() {
     const classes = {
-      story: `mt-12
-        mb-8`,
-      storyName: `text-2xl`
+      story: `mt-6
+        mb-4
+        px-3
+        md:mt-12
+        md:mb-8
+        md:px-0`,
+      storyName: `text-xl
+        md:text-2xl`,
+      commentsContainer: `px-3
+        md:px-0`
     };
 
     const { story, loadingStory, comments, loadingComments } = this.state;
@@ -59,11 +66,11 @@ class Story extends Component {
         {loadingComments ? (
           <BubbleSpinLoader color={"#423D33"} size={8} />
         ) : (
-          <Fragment>
+          <div className={classes.commentsContainer}>
             {comments.map(comment => (
               <Comment key={comment.id} comment={comment} />
             ))}
-          </Fragment>
+          </div>
         )}
       </Fragment>
     );

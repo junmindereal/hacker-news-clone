@@ -3,14 +3,16 @@ import StoryMeta from "./StoryMeta";
 
 function Comment({ comment }) {
   const classes = {
-    cards: `p-6
+    cards: `p-3
       bg-bgPrimary2
       border-b-2
       border-bgPrimary1
-      rounded`,
+      rounded
+      md:p-6`,
     comment: `mt-2
-      text-base
-      text-primary1`
+      text-sm
+      text-primary1
+      md:text-base`
   };
 
   return (

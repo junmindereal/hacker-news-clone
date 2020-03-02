@@ -32,18 +32,28 @@ class User extends Component {
 
   render() {
     const classes = {
-      user: `mt-12`,
-      userName: `text-2xl
+      user: `mt-6
+        px-3
+        md:px-0
+        md:mt-12`,
+      userName: `text-xl
         text-primary1
-        font-semibold`,
-      userMeta: `text-sm
-        text-primary2`,
+        font-semibold
+        md:text-2xl`,
+      userMeta: `text-xs
+        text-primary2
+        md:text-sm`,
       strong: `font-semibold`,
-      title: `mt-12
-        mb-6
-        text-2xl
+      title: `mb-3
+        text-xl
         text-primary1
-        font-semibold`
+        font-semibold
+        md:mb-6
+        md:text-2xl`,
+      storiesContainer: `mt-6
+        px-3
+        md:mt-12
+        md:px-0`
     };
 
     const { user, loadingUser, stories, loadingStories } = this.state;
@@ -64,10 +74,10 @@ class User extends Component {
         {loadingStories ? (
           <BubbleSpinLoader color={"#423D33"} size={8} />
         ) : (
-          <Fragment>
+          <div className={classes.storiesContainer}>
             <h2 className={classes.title}>Posts</h2>
             <StoriesList stories={stories} />
-          </Fragment>
+          </div>
         )}
       </Fragment>
     );

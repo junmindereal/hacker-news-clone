@@ -46,21 +46,30 @@ class Stories extends Component {
 
   render() {
     const classes = {
-      container: `mt-12`,
+      container: `mt-12
+      px-3
+      lg:px-0`,
       pagination: `pagination
         flex
-        justify-center
-        my-6`,
+        justify-between
+        my-6
+        lg:justify-center`,
       paginItem: `mx-1
         text-primary1
         rounded
-        hover:bg-primary3`,
+        hidden
+        hover:bg-primary3
+        lg:bg-transparent
+        lg:block`,
       paginLink: `px-3
-        py-2`,
+        py-2
+        text-sm
+        lg:text-base`,
       paginDisabled: `disabled
         text-primary3
         pointer-events-none
-        hover:bg-bgPrimary1`
+        hover:bg-bgPrimary1`,
+      smVisible: `sm-visible`
     };
 
     const {
@@ -88,6 +97,8 @@ class Stories extends Component {
               innerClass={classes.pagination}
               itemClass={classes.paginItem}
               linkClass={classes.paginLink}
+              itemClassPrev={classes.smVisible}
+              itemClassNext={classes.smVisible}
               activePage={currentPage}
               itemsCountPerPage={pageSize}
               totalItemsCount={totalCount}

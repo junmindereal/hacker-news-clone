@@ -5,14 +5,16 @@ import StoryMeta from "./StoryMeta";
 
 function StoriesList({ stories }) {
   const classes = {
-    card: `p-6
+    card: `p-3
       bg-bgPrimary2
       border-b-2
       border-bgPrimary1
-      rounded`,
-    message: `text-2xl
+      rounded
+      md:p-6`,
+    message: `text-lg
     text-primary1
-    font-semibold`
+    font-semibold
+    md:text-2xl`
   };
 
   if (stories === 0) {

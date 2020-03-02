@@ -4,10 +4,14 @@ import { Link } from "react-router-dom";
 
 function Title({ url, id, title, style }) {
   const classes = {
-    cardTitle: `text-lg
+    cardTitle: `
+      text-base
       text-primary1
       font-semibold
+      leading-tight
       hover:text-secondary1
+      md:text-lg
+      md:leading-normal
       ${style}`
   };
 

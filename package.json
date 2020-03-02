@@ -24,7 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:styles": "postcss src/styles/tailwind.css -o src/styles/styles.css",
-    "prebuild": "npm run build:styles",
+    "prebuild": "NODE_ENV=production npm run build:styles",
     "prestart": "npm run build:styles"
   },
   "eslintConfig": {
@@ -43,10 +43,12 @@
     ]
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.1.0",
     "@iconify/icons-fa-solid": "^1.0.7",
     "@iconify/icons-vs": "^1.0.1",
     "@iconify/react": "^1.1.1",
     "autoprefixer": "^9.7.4",
+    "gh-pages": "^2.2.0",
     "postcss-cli": "^7.1.0",
     "tailwindcss": "^1.2.0"
   }

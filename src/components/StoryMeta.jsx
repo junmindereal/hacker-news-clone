@@ -5,8 +5,9 @@ import { formatDate } from "../utils/helpers";
 
 function StoryMeta({ by, id, time, descendants }) {
   const classes = {
-    cardMeta: `text-sm
-      text-primary2`,
+    cardMeta: `text-xs
+      text-primary2
+      md:text-sm`,
     metaLink: `font-semibold
       hover:text-secondary2`
   };
