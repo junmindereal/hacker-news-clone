@@ -40,6 +40,7 @@ class User extends Component {
         text-primary2`,
       strong: `font-semibold`,
       title: `mt-12
+        mb-6
         text-2xl
         text-primary1
         font-semibold`

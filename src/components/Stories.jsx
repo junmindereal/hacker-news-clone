@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 import Pagination from "react-js-pagination";
 import { BubbleSpinLoader } from "react-css-loaders2";
+import StoriesList from "./StoriesList";
 import { getStoryIds, getStories } from "../services/storyService";
 import { paginate } from "../utils/helpers";
 
-class StoriesList extends Component {
+class Stories extends Component {
   state = {
     stories: [],
     currentPage: 1,
@@ -44,6 +46,7 @@ class StoriesList extends Component {
 
   render() {
     const classes = {
+      container: `mt-12`,
       pagination: `pagination
         flex
         justify-center
@@ -74,7 +77,7 @@ class StoriesList extends Component {
         {loading ? (
           <BubbleSpinLoader color={"#423D33"} size={8} />
         ) : (
-          <Fragment>
+          <div className={classes.container}>
             <StoriesList stories={stories} />
             <Pagination
               firstPageText="first"
@@ -91,11 +94,15 @@ class StoriesList extends Component {
               pageRangeDisplayed={pageLimit}
               onChange={this.handlePageChange.bind(this)}
             />
-          </Fragment>
+          </div>
         )}
       </Fragment>
     );
   }
 }
 
-export default StoriesList;
+export default Stories;
+
+Stories.propTypes = {
+  type: PropTypes.oneOf(["top", "new"])
+};

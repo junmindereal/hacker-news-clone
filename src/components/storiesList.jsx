@@ -6,7 +6,6 @@ import StoryMeta from "./StoryMeta";
 function StoriesList({ stories }) {
   console.log(stories);
   const classes = {
-    cardsContainer: `mt-12`,
     card: `p-6
       bg-bgPrimary2
       border-b-2
@@ -22,7 +21,7 @@ function StoriesList({ stories }) {
   }
 
   return (
-    <ul className={classes.cardsContainer}>
+    <ul>
       {stories.map(story => (
         <li key={story.id} className={classes.card}>
           <Title url={story.url} id={story.id} title={story.title} />
