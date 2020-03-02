@@ -1,7 +1,7 @@
 {
   "homepage": "http://junmindereal.github.io/hacker-news-clone",
   "name": "hacker-news-clone",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",

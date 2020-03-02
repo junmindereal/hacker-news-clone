@@ -9,25 +9,13 @@ import { formatDate } from "../utils/helpers";
 class User extends Component {
   state = {
     user: null,
-    stories: null,
-    loadingUser: true,
-    loadingStories: true
+    loadingUser: true
   };
 
   async componentDidMount() {
     const { id } = queryString.parse(this.props.location.search);
     const { data: user } = await getUser(id);
     this.setState({ user, loadingUser: false });
-
-    const ids = this.state.user.submitted;
-    let stories = await getStories(ids);
-    stories = stories.map(s => s.data);
-    stories = this.onlyStories(stories);
-    this.setState({ stories, loadingStories: false });
-  }
-
-  onlyStories(stories) {
-    return stories.filter(({ type }) => type === "story");
   }
 
   render() {
@@ -53,7 +41,9 @@ class User extends Component {
       storiesContainer: `mt-6
         px-3
         md:mt-12
-        md:px-0`
+        md:px-0`,
+      about: `mt-3
+        md:mt-6`
     };
 
     const { user, loadingUser, stories, loadingStories } = this.state;
@@ -67,16 +57,17 @@ class User extends Component {
             <h1 className={classes.userName}>{user.id}</h1>
             <p className={classes.userMeta}>
               joined <TimeAgo date={formatDate(user.created)} /> | has{" "}
-              <span className={classes.strong}>{user.karma}</span> Karma
+              <span className={classes.strong}>
+                {user.karma.toLocaleString()}
+              </span>{" "}
+              Karma
             </p>
-          </div>
-        )}
-        {loadingStories ? (
-          <BubbleSpinLoader color={"#423D33"} size={8} />
-        ) : (
-          <div className={classes.storiesContainer}>
-            <h2 className={classes.title}>Posts</h2>
-            <StoriesList stories={stories} />
+            <div className={classes.about}>
+              <p
+                className={classes.userMeta}
+                dangerouslySetInnerHTML={{ __html: user.about }}
+              />
+            </div>
           </div>
         )}
       </Fragment>
